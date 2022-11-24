@@ -10,6 +10,7 @@ module Aoc
       register 'run', Aoc::Cli::Run
       register 'console', Aoc::Cli::Console
       register 'test', Aoc::Cli::Test
+      register 'watch', Aoc::Cli::Watch
     end
   end
 end

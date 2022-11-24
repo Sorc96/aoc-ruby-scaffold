@@ -1,5 +1,7 @@
 # Advent of code - Ruby scaffolding
 
+Install dependencies with `bundle install`.
+
 ## Solve a challenge
 
 - Save the input in `input/{year}/{day}` (`input/2022/1`)
@@ -9,3 +11,7 @@
 ## Run the code
 
 Use the `./aoc` command to run the challenges, run tests, or enter the interactive mode.
+
+## Watch mode
+
+To automatically run challenges when the implementation changes, use `./aoc watch`
