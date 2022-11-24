@@ -2,22 +2,27 @@
 
 require_relative 'setup'
 
-def print_usage
-  puts 'Usage:'
-  puts "Run all:              #{$PROGRAM_NAME}"
-  puts "Run single day:       #{$PROGRAM_NAME} <day>"
-  puts "Run single challenge: #{$PROGRAM_NAME} <day> <a|b>"
+def usage
+  [
+    'Usage:',
+    "Run all:              #{$PROGRAM_NAME}",
+    "Run single day:       #{$PROGRAM_NAME} <day>",
+    "Run single challenge: #{$PROGRAM_NAME} <day> <a|b>"
+  ].join("\n")
 end
 
 aoc = Aoc::Runner.new(2022)
 
 begin
-  case ARGV.size
-  when 0 then puts(aoc.run_all)
-  when 1 then puts(aoc.run_day(ARGV[0]))
-  when 2 then puts(aoc.run_challenge(ARGV[0], ARGV[1]))
-  else print_usage
-  end
+  result =
+    case ARGV.size
+    when 0 then aoc.run_all
+    when 1 then aoc.run_day(ARGV[0])
+    when 2 then aoc.run_challenge(ARGV[0], ARGV[1])
+    else usage
+    end
+
+  puts result
 rescue Aoc::AocError => e
   puts e.message
 end

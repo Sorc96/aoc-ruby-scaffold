@@ -7,6 +7,6 @@ module Aoc
     include Dry.Types
 
     Day = Types::Coercible::Integer.constrained(included_in: 1..24)
-    Part = Types::String.enum('a', 'b')
+    Part = Types::Coercible::Symbol.enum(:a, :b)
   end
 end

@@ -1,0 +1,30 @@
+#! /usr/bin/env ruby
+
+require 'pry'
+
+require_relative 'setup'
+
+def reload!
+  CodeLoader.reload
+end
+
+def aoc(day = nil, part = nil)
+  reload!
+
+  aoc = Aoc::Runner.new(2022)
+
+  result =
+    if day.nil?
+      aoc.run_all
+    elsif part.nil?
+      aoc.run_day(day)
+    else
+      aoc.run_challenge(day, part)
+    end
+
+  puts result
+rescue Aoc::AocError => e
+  puts e.message
+end
+
+pry

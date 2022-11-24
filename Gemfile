@@ -2,7 +2,6 @@
 
 source 'https://rubygems.org'
 
-ruby '3.1.2'
-
 gem 'dry-types'
+gem 'pry'
 gem 'zeitwerk'

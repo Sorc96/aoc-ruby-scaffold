@@ -5,7 +5,7 @@ require_relative 'errors'
 module Aoc
   class Runner
     def initialize(year)
-      @year = Types::Coercible::Integer[year]
+      @year = Aoc::Types::Coercible::Integer[year]
     end
 
     def run_all
@@ -22,18 +22,20 @@ module Aoc
     end
 
     def run_challenge(day, part)
+      "#{day.to_s.rjust(2, ' ')} #{part}: #{run_raw(day, part)}"
+    end
+
+    def run_raw(day, part)
       begin
-        day = Types::Day[day]
-        part = Types::Part[part]
+        day = Aoc::Types::Day[day]
+        part = Aoc::Types::Part[part]
       rescue Dry::Types::CoercionError => e
         raise InputError.new(e.message)
       end
 
-      result = klass_for_day(day)
+      klass_for_day(day)
         .new(input_for_day(day))
         .send("run_#{part}")
-
-      "#{day.to_s.rjust(2, ' ')} #{part}: #{result}"
     end
 
     private
