@@ -5,7 +5,7 @@ module Aoc
     class Run < BaseCommand
       desc 'Run the challenges and display results'
 
-      argument :day, desc: "Day of the challenge. Leave blank to run all days"
+      argument :day, desc: 'Day of the challenge. Leave blank to run all days'
       argument :part, desc: "Part 'a' or 'b'. leave blank to run the entire day"
 
       example [
@@ -14,19 +14,8 @@ module Aoc
         '<day> <a|b> # Runs a single challenge'
       ]
 
-      def call(day: nil, part: nil, year:, **)
-        aoc = Aoc::Runner.new(year)
-
-        result =
-          if day.nil?
-            aoc.run_all
-          elsif part.nil?
-            aoc.run_day(day)
-          else
-            aoc.run_challenge(day, part)
-          end
-
-        puts result
+      def call(year:, day: nil, part: nil, **)
+        puts Aoc::Runner.new(year).run(day, part)
       rescue Aoc::AocError => e
         puts e.message
       end

@@ -7,7 +7,7 @@ module Aoc
 
       argument :day, desc: 'Run tests for a single day. Leave blank to run all tests.'
 
-      def call(day: nil, year:, **)
+      def call(year:, day: nil, **)
         Zeitwerk::Loader.new.tap do |loader|
           loader.push_dir("#{__dir__}/../../../test")
           loader.setup

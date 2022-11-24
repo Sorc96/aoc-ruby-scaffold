@@ -10,11 +10,20 @@ module Aoc
       raise InputError.new("Invalid year #{year}")
     end
 
+    def run(day = nil, part = nil)
+      if day.nil?
+        run_all
+      elsif part.nil?
+        run_day(day)
+      else
+        run_challenge(day, part)
+      end
+    end
+
     def run_all
       result = []
       (1..24).each { |day| result << run_day(day) }
       result.join("\n")
-
     rescue DayMissingError
       result.join("\n")
     end

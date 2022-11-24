@@ -13,25 +13,13 @@ module Aoc
 
       def aoc(day = nil, part = nil, year: @year)
         reload!
-
-        aoc = Aoc::Runner.new(year)
-
-        result =
-          if day.nil?
-            aoc.run_all
-          elsif part.nil?
-            aoc.run_day(day)
-          else
-            aoc.run_challenge(day, part)
-          end
-
-        puts result
+        puts Aoc::Runner.new(year).run(day, part)
       rescue Aoc::AocError => e
         puts e.message
       end
 
       def self.to_s
-        "AOC"
+        'AOC'
       end
     end
   end
