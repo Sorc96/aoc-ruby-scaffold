@@ -7,10 +7,10 @@ module Aoc
     module Commands
       extend Dry::CLI::Registry
 
-      register 'run', Aoc::Cli::Run
-      register 'console', Aoc::Cli::Console
-      register 'test', Aoc::Cli::Test
-      register 'watch', Aoc::Cli::Watch
+      register 'run', Aoc::Cli::Run, aliases: %w[r]
+      register 'console', Aoc::Cli::Console, aliases: %w[c]
+      register 'test', Aoc::Cli::Test, aliases: %w[t]
+      register 'watch', Aoc::Cli::Watch, aliases: %w[w]
     end
   end
 end
