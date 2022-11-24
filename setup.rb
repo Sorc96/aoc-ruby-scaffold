@@ -3,7 +3,7 @@
 require 'zeitwerk'
 
 CodeLoader = Zeitwerk::Loader.new.tap do |loader|
-  loader.push_dir(File.join(__dir__, 'lib'))
+  loader.push_dir("#{__dir__}/lib")
   loader.enable_reloading
   loader.setup
 end

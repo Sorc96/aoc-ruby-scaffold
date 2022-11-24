@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
+require 'minitest'
 
 AocTest = Object.new
 
@@ -13,5 +13,5 @@ def AocTest.define(year, cases)
     end
   end
 
-  Object.const_set("AocTest#{year}", test_klass)
+  Object.const_set("Aoc#{year}Test", test_klass)
 end
