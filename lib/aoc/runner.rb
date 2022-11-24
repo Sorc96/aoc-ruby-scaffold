@@ -5,7 +5,9 @@ require_relative 'errors'
 module Aoc
   class Runner
     def initialize(year)
-      @year = Aoc::Types::Coercible::Integer[year]
+      @year = Aoc::Types::Year[year]
+    rescue Dry::Types::CoercionError
+      raise InputError.new("Invalid year #{year}")
     end
 
     def run_all

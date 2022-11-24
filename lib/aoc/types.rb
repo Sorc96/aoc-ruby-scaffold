@@ -6,7 +6,8 @@ module Aoc
   module Types
     include Dry.Types
 
-    Day = Types::Coercible::Integer.constrained(included_in: 1..24)
+    Year = Types::Coercible::Integer.constrained(gteq: 2012)
+    Day = Types::Coercible::Integer.constrained(included_in: 1..25)
     Part = Types::Coercible::Symbol.enum(:a, :b)
   end
 end
