@@ -1,28 +1,6 @@
 #! /usr/bin/env ruby
 
+require 'dry/cli'
 require_relative 'setup'
 
-def usage
-  [
-    'Usage:',
-    "Run all:              #{$PROGRAM_NAME}",
-    "Run single day:       #{$PROGRAM_NAME} <day>",
-    "Run single challenge: #{$PROGRAM_NAME} <day> <a|b>"
-  ].join("\n")
-end
-
-aoc = Aoc::Runner.new(2022)
-
-begin
-  result =
-    case ARGV.size
-    when 0 then aoc.run_all
-    when 1 then aoc.run_day(ARGV[0])
-    when 2 then aoc.run_challenge(ARGV[0], ARGV[1])
-    else usage
-    end
-
-  puts result
-rescue Aoc::AocError => e
-  puts e.message
-end
+Dry::CLI.new(Aoc::Cli::Commands).call
