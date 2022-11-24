@@ -3,8 +3,6 @@
 module Aoc
   module Cli
     class ConsoleContext
-      attr_reader :year
-
       def initialize(year)
         @year = year
       end
@@ -13,7 +11,7 @@ module Aoc
         CodeLoader.reload
       end
 
-      def aoc(day = nil, part = nil)
+      def aoc(day = nil, part = nil, year: @year)
         reload!
 
         aoc = Aoc::Runner.new(year)
